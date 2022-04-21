@@ -30,7 +30,7 @@ namespace C968_Software_I_Dainen_Mann
         private void InitializeComponent()
         {
             this.AddPartLabel = new System.Windows.Forms.Label();
-            this.AddPartInhouse = new System.Windows.Forms.RadioButton();
+            this.inHouseRadio = new System.Windows.Forms.RadioButton();
             this.AddPartOutsourced = new System.Windows.Forms.RadioButton();
             this.AddPartID = new System.Windows.Forms.Label();
             this.AddPartName = new System.Windows.Forms.Label();
@@ -38,9 +38,16 @@ namespace C968_Software_I_Dainen_Mann
             this.PartPricelabel = new System.Windows.Forms.Label();
             this.PartMaxlabel = new System.Windows.Forms.Label();
             this.PartMinlabel = new System.Windows.Forms.Label();
-            this.PartMachineIDlabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.partMachineOrCompanyLabel = new System.Windows.Forms.Label();
+            this.PartSavebutton = new System.Windows.Forms.Button();
+            this.PartCancelbutton = new System.Windows.Forms.Button();
+            this.partIDTextBox = new System.Windows.Forms.TextBox();
+            this.partNameTextBox = new System.Windows.Forms.TextBox();
+            this.partInvTextBox = new System.Windows.Forms.TextBox();
+            this.partPriceTextBox = new System.Windows.Forms.TextBox();
+            this.partMaxTextBox = new System.Windows.Forms.TextBox();
+            this.partMinTextBox = new System.Windows.Forms.TextBox();
+            this.machineOrCompTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // AddPartLabel
@@ -54,17 +61,16 @@ namespace C968_Software_I_Dainen_Mann
             this.AddPartLabel.Text = "Part";
             this.AddPartLabel.Click += new System.EventHandler(this.AddPartLabel_Click);
             // 
-            // AddPartInhouse
+            // inHouseRadio
             // 
-            this.AddPartInhouse.AutoSize = true;
-            this.AddPartInhouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddPartInhouse.Location = new System.Drawing.Point(149, 9);
-            this.AddPartInhouse.Name = "AddPartInhouse";
-            this.AddPartInhouse.Size = new System.Drawing.Size(75, 19);
-            this.AddPartInhouse.TabIndex = 1;
-            this.AddPartInhouse.TabStop = true;
-            this.AddPartInhouse.Text = "In-House";
-            this.AddPartInhouse.UseVisualStyleBackColor = true;
+            this.inHouseRadio.AutoSize = true;
+            this.inHouseRadio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inHouseRadio.Location = new System.Drawing.Point(149, 9);
+            this.inHouseRadio.Name = "inHouseRadio";
+            this.inHouseRadio.Size = new System.Drawing.Size(75, 19);
+            this.inHouseRadio.TabIndex = 1;
+            this.inHouseRadio.Text = "In-House";
+            this.inHouseRadio.UseVisualStyleBackColor = true;
             // 
             // AddPartOutsourced
             // 
@@ -74,9 +80,9 @@ namespace C968_Software_I_Dainen_Mann
             this.AddPartOutsourced.Name = "AddPartOutsourced";
             this.AddPartOutsourced.Size = new System.Drawing.Size(88, 19);
             this.AddPartOutsourced.TabIndex = 2;
-            this.AddPartOutsourced.TabStop = true;
             this.AddPartOutsourced.Text = "Outsourced";
             this.AddPartOutsourced.UseVisualStyleBackColor = true;
+            this.AddPartOutsourced.CheckedChanged += new System.EventHandler(this.AddPartOutsourced_CheckedChanged);
             // 
             // AddPartID
             // 
@@ -141,42 +147,106 @@ namespace C968_Software_I_Dainen_Mann
             this.PartMinlabel.TabIndex = 8;
             this.PartMinlabel.Text = "Min";
             // 
-            // PartMachineIDlabel
+            // partMachineOrCompanyLabel
             // 
-            this.PartMachineIDlabel.AutoSize = true;
-            this.PartMachineIDlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PartMachineIDlabel.Location = new System.Drawing.Point(146, 307);
-            this.PartMachineIDlabel.Name = "PartMachineIDlabel";
-            this.PartMachineIDlabel.Size = new System.Drawing.Size(70, 15);
-            this.PartMachineIDlabel.TabIndex = 9;
-            this.PartMachineIDlabel.Text = "Machine ID";
+            this.partMachineOrCompanyLabel.AutoSize = true;
+            this.partMachineOrCompanyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.partMachineOrCompanyLabel.Location = new System.Drawing.Point(146, 307);
+            this.partMachineOrCompanyLabel.Name = "partMachineOrCompanyLabel";
+            this.partMachineOrCompanyLabel.Size = new System.Drawing.Size(70, 15);
+            this.partMachineOrCompanyLabel.TabIndex = 9;
+            this.partMachineOrCompanyLabel.Text = "Machine ID";
+            this.partMachineOrCompanyLabel.Click += new System.EventHandler(this.PartMachineIDlabel_Click);
             // 
-            // button1
+            // PartSavebutton
             // 
-            this.button1.Location = new System.Drawing.Point(289, 393);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.PartSavebutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PartSavebutton.Location = new System.Drawing.Point(283, 393);
+            this.PartSavebutton.Name = "PartSavebutton";
+            this.PartSavebutton.Size = new System.Drawing.Size(75, 23);
+            this.PartSavebutton.TabIndex = 10;
+            this.PartSavebutton.Text = "Save";
+            this.PartSavebutton.UseVisualStyleBackColor = true;
+            this.PartSavebutton.Click += new System.EventHandler(this.PartSavebutton_Click);
             // 
-            // button2
+            // PartCancelbutton
             // 
-            this.button2.Location = new System.Drawing.Point(414, 393);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.PartCancelbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PartCancelbutton.Location = new System.Drawing.Point(409, 393);
+            this.PartCancelbutton.Name = "PartCancelbutton";
+            this.PartCancelbutton.Size = new System.Drawing.Size(75, 23);
+            this.PartCancelbutton.TabIndex = 11;
+            this.PartCancelbutton.Text = "Cancel";
+            this.PartCancelbutton.UseVisualStyleBackColor = true;
+            this.PartCancelbutton.Click += new System.EventHandler(this.PartCancelbutton_Click);
+            // 
+            // partIDTextBox
+            // 
+            this.partIDTextBox.Enabled = false;
+            this.partIDTextBox.Location = new System.Drawing.Point(258, 65);
+            this.partIDTextBox.Name = "partIDTextBox";
+            this.partIDTextBox.Size = new System.Drawing.Size(100, 20);
+            this.partIDTextBox.TabIndex = 12;
+            this.partIDTextBox.TextChanged += new System.EventHandler(this.partIDTextBox_TextChanged);
+            // 
+            // partNameTextBox
+            // 
+            this.partNameTextBox.Location = new System.Drawing.Point(258, 109);
+            this.partNameTextBox.Name = "partNameTextBox";
+            this.partNameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.partNameTextBox.TabIndex = 13;
+            // 
+            // partInvTextBox
+            // 
+            this.partInvTextBox.Location = new System.Drawing.Point(258, 156);
+            this.partInvTextBox.Name = "partInvTextBox";
+            this.partInvTextBox.Size = new System.Drawing.Size(100, 20);
+            this.partInvTextBox.TabIndex = 14;
+            // 
+            // partPriceTextBox
+            // 
+            this.partPriceTextBox.Location = new System.Drawing.Point(258, 203);
+            this.partPriceTextBox.Name = "partPriceTextBox";
+            this.partPriceTextBox.Size = new System.Drawing.Size(100, 20);
+            this.partPriceTextBox.TabIndex = 15;
+            // 
+            // partMaxTextBox
+            // 
+            this.partMaxTextBox.Location = new System.Drawing.Point(197, 250);
+            this.partMaxTextBox.Name = "partMaxTextBox";
+            this.partMaxTextBox.Size = new System.Drawing.Size(100, 20);
+            this.partMaxTextBox.TabIndex = 16;
+            // 
+            // partMinTextBox
+            // 
+            this.partMinTextBox.Location = new System.Drawing.Point(368, 250);
+            this.partMinTextBox.Name = "partMinTextBox";
+            this.partMinTextBox.Size = new System.Drawing.Size(100, 20);
+            this.partMinTextBox.TabIndex = 17;
+            // 
+            // machineOrCompTextBox
+            // 
+            this.machineOrCompTextBox.Location = new System.Drawing.Point(258, 302);
+            this.machineOrCompTextBox.Name = "machineOrCompTextBox";
+            this.machineOrCompTextBox.Size = new System.Drawing.Size(100, 20);
+            this.machineOrCompTextBox.TabIndex = 18;
+            this.machineOrCompTextBox.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // AddPartScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(519, 450);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.PartMachineIDlabel);
+            this.Controls.Add(this.machineOrCompTextBox);
+            this.Controls.Add(this.partMinTextBox);
+            this.Controls.Add(this.partMaxTextBox);
+            this.Controls.Add(this.partPriceTextBox);
+            this.Controls.Add(this.partInvTextBox);
+            this.Controls.Add(this.partNameTextBox);
+            this.Controls.Add(this.partIDTextBox);
+            this.Controls.Add(this.PartCancelbutton);
+            this.Controls.Add(this.PartSavebutton);
+            this.Controls.Add(this.partMachineOrCompanyLabel);
             this.Controls.Add(this.PartMinlabel);
             this.Controls.Add(this.PartMaxlabel);
             this.Controls.Add(this.PartPricelabel);
@@ -184,7 +254,7 @@ namespace C968_Software_I_Dainen_Mann
             this.Controls.Add(this.AddPartName);
             this.Controls.Add(this.AddPartID);
             this.Controls.Add(this.AddPartOutsourced);
-            this.Controls.Add(this.AddPartInhouse);
+            this.Controls.Add(this.inHouseRadio);
             this.Controls.Add(this.AddPartLabel);
             this.Name = "AddPartScreen";
             this.Text = "Add Part";
@@ -197,7 +267,7 @@ namespace C968_Software_I_Dainen_Mann
         #endregion
 
         private System.Windows.Forms.Label AddPartLabel;
-        private System.Windows.Forms.RadioButton AddPartInhouse;
+        private System.Windows.Forms.RadioButton inHouseRadio;
         private System.Windows.Forms.RadioButton AddPartOutsourced;
         private System.Windows.Forms.Label AddPartID;
         private System.Windows.Forms.Label AddPartName;
@@ -205,8 +275,15 @@ namespace C968_Software_I_Dainen_Mann
         private System.Windows.Forms.Label PartPricelabel;
         private System.Windows.Forms.Label PartMaxlabel;
         private System.Windows.Forms.Label PartMinlabel;
-        private System.Windows.Forms.Label PartMachineIDlabel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label partMachineOrCompanyLabel;
+        private System.Windows.Forms.Button PartSavebutton;
+        private System.Windows.Forms.Button PartCancelbutton;
+        private System.Windows.Forms.TextBox partIDTextBox;
+        private System.Windows.Forms.TextBox partNameTextBox;
+        private System.Windows.Forms.TextBox partInvTextBox;
+        private System.Windows.Forms.TextBox partPriceTextBox;
+        private System.Windows.Forms.TextBox partMaxTextBox;
+        private System.Windows.Forms.TextBox partMinTextBox;
+        private System.Windows.Forms.TextBox machineOrCompTextBox;
     }
 }

@@ -1,25 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace C968_Software_I_Dainen_Mann
+﻿namespace C968_Software_I_Dainen_Mann
 {
-    public class Part
+    public struct BasePart
     {
-        private int PartID;
-        private string PartName;
-        private int PartInventory;
-        private double PartPrice;
-        private int PartMin;
-        private int PartMax;
+        public int partID;
+        public string name;
+        public decimal price;
+        public int inStock;
+        public int min;
+        public int max;
 
-        public int doPartID { get; set; }
-        public string doPartName { get; set; }
-        public int doPartInventory { get; set; }
-        public double doPartPrice { get; set; }
-        public int doPartMin { get; set; }
-        public int doPartMax { get; set; }
+    }
+    public abstract class Part
+    {
+        private int _partID;
+        private string _partName;
+        private int _partInventory;
+        private double _partPrice;
+        private int _partMin;
+        private int _partMax;
+
+        //getters and setters
+        public int PartID { get; set; }
+        public string Name { get; set; }
+        public int Inventory { get; set; }
+        public decimal Price { get; set; }
+        public int Min { get; set; }
+        public int Max { get; set; }
     }
 }
